@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Base>
+  <h1>Testing AI tooling for a living, writing about it in public.</h1>
+  <p class="lede">
+    I run structured evaluations of AI coding agents and data pipelines — the kind of work where
+    the interesting part is never the demo, but what breaks on the third run. This site collects
+    the method: task books, acceptance scripts, failure taxonomies, and the numbers that come out.
+  </p>
+
+  <h2>Latest</h2>
+  <ul class="posts">
+    {posts.slice(0, 5).map((post) => (
+      <li>
+        <a href={`/posts/${post.id}/`}>{post.data.title}</a>
+        <span class="date">{post.data.date.toISOString().slice(0, 10)}</span>
+        <p class="desc">{post.data.description}</p>
+      </li>
+    ))}
+    {posts.length === 0 && <li><p class="desc">First post is being written.</p></li>}
+  </ul>
+
+  <div class="box">
+    <h2>Newsletter</h2>
+    <p>
+      One long read, roughly every two weeks. Signup is not wired up yet —
+      the form lands here once the mailing list is set up.
+    </p>
+    <!-- TODO(newsletter): replace with the real signup form (MailerLite) after the account is created. -->
+  </div>
+</Base>

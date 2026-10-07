@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const date = post.data.date.toISOString().slice(0, 10);
+---
+
+<Base title={`${post.data.title} — Field Notes`} description={post.data.description}>
+  <article>
+    <h1>{post.data.title}</h1>
+    <p class="meta">{date}{post.data.lang === 'zh' ? ' · 中文' : ''}</p>
+    <Content />
+  </article>
+</Base>
