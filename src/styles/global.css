@@ -69,6 +69,20 @@ ul.posts .desc { color: var(--fg-muted); font-size: 0.875rem; margin: 0.2rem 0 0
 
 .box h2 { margin: 0 0 0.4rem; font-size: 0.95rem; }
 .box p { margin: 0; font-size: 0.875rem; color: var(--fg-muted); }
+.box p.tiny { margin: 0.6rem 0 0; font-size: 0.8rem; }
+
+button.donate {
+  font: inherit;
+  font-weight: 600;
+  background: #ffd140;
+  color: #16181d;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.15rem;
+  cursor: pointer;
+}
+button.donate:hover { background: #f2c62c; }
+button.donate:active { transform: translateY(1px); }
 
 .pending { font-family: var(--mono); font-size: 0.8rem; }
 

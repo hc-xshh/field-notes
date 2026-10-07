@@ -15,12 +15,21 @@ import Base from '../layouts/Base.astro';
 
   <div class="box">
     <h2>One-off support</h2>
-    <p>
-      The payment button is not live yet — the merchant account is still being reviewed.
-      It will appear here as a card payment option, no account required on your side.
+    <form action="https://www.paypal.com/ncp/payment/8AWFEHFET7ESU" method="post" target="_blank" rel="noopener">
+      <button class="donate" type="submit">Support with PayPal</button>
+    </form>
+    <p class="tiny">
+      You set the amount. No PayPal account needed — card, Apple Pay or PayPal balance.
+      Opens on paypal.com in a new tab.
     </p>
-    <!-- TODO(payments): embed the PayPal payment button / link here once the individual-seller account passes review. -->
   </div>
+
+  <h2>What your support pays for</h2>
+  <p>
+    Nothing here is paywalled, and nothing will be. Support covers the domain, the hosting,
+    and the hours that go into the task books and scripts behind each post — the parts that
+    take weeks and are not visible in the published text.
+  </p>
 
   <h2>Other ways to help</h2>
   <p>
