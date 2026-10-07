@@ -37,5 +37,11 @@ Two things on the site are honest placeholders, marked with `TODO` in the source
 
 ## Deploying
 
-Cloudflare Pages → Connect to Git → pick this repo. Build command `npm run build`, output
-directory `dist`. Every push to `main` then publishes automatically.
+Already wired up: the Cloudflare Pages project `field-notes` is connected to this repo
+(source: GitHub, production branch `main`), so **every push to `main` deploys automatically**.
+
+- Build command `npm run build`, output directory `dist`, `NODE_VERSION=22`.
+- Live at <https://field-notes-6cd.pages.dev> — the `-6cd` suffix is Cloudflare's: the plain
+  `field-notes.pages.dev` name was already taken by another account.
+- A custom domain can be attached later without touching the code; only `site:` in
+  `astro.config.mjs` needs updating.
