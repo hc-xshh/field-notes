@@ -1,10 +1,17 @@
 # Cloudflare Pages redirects.
 #
-# When a real domain replaces the temporary *.pages.dev host, point this at it:
-# a 301 keeps every published link working and preserves article paths.
+# Verified 2026-10-08 on this project's *.pages.dev host: rules in this file ARE
+# honoured there (a probe rule returned `301` with `Location` preserving the
+# path via `:splat`), so the temporary host can 301 to a real domain later
+# without any link going dead.
+# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
+#   - redirects are always followed, whether or not a static asset matches
+#   - not applied to requests served by Pages Functions (this site has none)
+#   - `*` wildcards; `:splat` carries the matched path into the destination
+#
+# When a real domain replaces the temporary one, this is the rule to ship:
 #
 # /*  https://example.com/:splat  301
 #
-# Probe: confirms this file is honoured on the project's *.pages.dev hostname
-# too, not only on custom domains. Safe to delete once noted.
-/redirect-test/*  https://example.com/:splat  301
+# Add explicit rules for extension paths (/rss.xml, /robots.txt, /fonts/*,
+# /sitemap-*.xml) and re-run the probe before announcing the switch.
