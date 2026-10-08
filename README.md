@@ -12,7 +12,15 @@ npm install
 npm run dev      # local preview at http://localhost:4321
 npm run build    # static output in dist/
 npm run preview  # serve the built output
+python3 scripts/make_og.py   # regenerate public/og/*.png social cards
 ```
+
+`scripts/make_og.py` renders one 1200×630 card per post (plus `default.png` for
+non-post pages) with headless Chrome, using the same self-hosted fonts as the
+site. Run it after adding a post and commit the PNGs — cards are pre-rendered
+files rather than generated at request time, which keeps the site purely static
+(no Functions, no build-time image service). Pages point at their card through
+the `ogImage` prop on `Base.astro`.
 
 ## Writing a post
 
@@ -28,12 +36,22 @@ draft: false      # true keeps it out of the build
 ---
 ```
 
-## Open placeholders
+## Live pieces and one open placeholder
 
-Two things on the site are honest placeholders, marked with `TODO` in the source:
+- **Newsletter signup** — MailerLite embedded form, double opt-in, wired into the
+  home page and the foot of every post.
+- **Payment button** — PayPal hosted button on `/support/` (plain HTML form, no
+  third-party script). No real payment has been made through it yet.
+- **Contact** — deliberately not published; `about.astro` carries the honest
+  fallback ("reply on the platform where you read this") and a `TODO(contact)`
+  marker for when an address exists.
 
-- **Newsletter signup** (`src/pages/index.astro`) — form lands once the mailing list account exists.
-- **Payment button** (`src/pages/support.astro`) — PayPal individual-seller account is under review.
+## Redirects
+
+`public/_redirects` is the rule that will move the temporary `*.pages.dev` host
+to a real domain with a 301 (path-preserving via `:splat`). The mechanism is
+verified on this project's pages.dev host; the rule itself is commented out
+until a domain exists.
 
 ## Deploying
 
