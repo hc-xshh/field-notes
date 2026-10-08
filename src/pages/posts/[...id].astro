@@ -18,4 +18,14 @@ const date = post.data.date.toISOString().slice(0, 10);
     <p class="meta">{date}{post.data.lang === 'zh' ? ' · 中文' : ''}</p>
     <Content />
   </article>
+
+  <section class="newsletter">
+    <h2>Newsletter</h2>
+    <p>
+      One long read, roughly every two weeks — the task books, the scripts, and what broke on
+      the third run. No spam, unsubscribe in one click.
+    </p>
+    <!-- MailerLite embedded form (account 2692872, form MoU3tD, double opt-in on) -->
+    <div class="ml-embedded" data-form="MoU3tD"></div>
+  </section>
 </Base>

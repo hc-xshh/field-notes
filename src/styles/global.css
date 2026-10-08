@@ -86,6 +86,12 @@ button.donate:active { transform: translateY(1px); }
 
 .pending { font-family: var(--mono); font-size: 0.8rem; }
 
+.newsletter { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+.newsletter h2 { margin-top: 0; }
+.newsletter > p { color: var(--fg-muted); font-size: 0.9rem; max-width: 34rem; }
+.newsletter .ml-form-embedContainer { width: 100% !important; }
+.newsletter .ml-form-embedWrapper { max-width: none !important; background-color: transparent !important; }
+
 article { margin-top: 0.5rem; }
 article h1 { margin-bottom: 0.25rem; }
 article .meta { font-family: var(--mono); font-size: 0.75rem; color: var(--fg-muted); margin-bottom: 1.5rem; }

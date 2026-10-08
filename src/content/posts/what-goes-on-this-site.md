@@ -25,5 +25,5 @@ NDA, any customer ticket, and any internal number stays out.
 **If it breaks on the third run, the post says so.** The failure mode is usually the most
 useful sentence in the whole piece.
 
-If that sounds like the kind of thing you want in your inbox, subscribe when the signup form
-opens — until then, the [posts](/posts/) page is where everything lands.
+If that sounds like the kind of thing you want in your inbox, the signup form is on the
+[front page](/). Until then, the [posts](/posts/) page is where everything lands.
