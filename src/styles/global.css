@@ -91,6 +91,10 @@ button.donate:active { transform: translateY(1px); }
 .newsletter > p { color: var(--fg-muted); font-size: 0.9rem; max-width: 34rem; }
 .newsletter .ml-form-embedContainer { width: 100% !important; }
 .newsletter .ml-form-embedWrapper { max-width: none !important; background-color: transparent !important; }
+/* The section above already carries the headline and blurb, so drop the
+   form's own default copy ("Newsletter" / "Signup for news and special offers!"). */
+.newsletter .ml-form-embedContent h4,
+.newsletter .ml-form-embedContent p { display: none; }
 
 article { margin-top: 0.5rem; }
 article h1 { margin-bottom: 0.25rem; }
