@@ -1,0 +1,10 @@
+# Cloudflare Pages redirects.
+#
+# When a real domain replaces the temporary *.pages.dev host, point this at it:
+# a 301 keeps every published link working and preserves article paths.
+#
+# /*  https://example.com/:splat  301
+#
+# Probe: confirms this file is honoured on the project's *.pages.dev hostname
+# too, not only on custom domains. Safe to delete once noted.
+/redirect-test/*  https://example.com/:splat  301
