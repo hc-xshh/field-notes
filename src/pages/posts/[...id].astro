@@ -1,31 +1,48 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Newsletter from '../../components/Newsletter.astro';
 import { getCollection, render } from 'astro:content';
+import { formatDate, readingTime, sortByDate } from '../../lib/posts';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts', ({ data }) => !data.draft);
-  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+  const posts = sortByDate(await getCollection('posts', ({ data }) => !data.draft));
+  return posts.map((post, index) => ({
+    params: { id: post.id },
+    props: { post, newer: posts[index - 1] ?? null, older: posts[index + 1] ?? null },
+  }));
 }
 
-const { post } = Astro.props;
+const { post, newer, older } = Astro.props;
 const { Content } = await render(post);
-const date = post.data.date.toISOString().slice(0, 10);
 ---
 
-<Base title={`${post.data.title} — Field Notes`} description={post.data.description}>
+<Base
+  title={`${post.data.title} — Field Notes`}
+  description={post.data.description}
+  kind="article"
+>
   <article>
-    <h1>{post.data.title}</h1>
-    <p class="meta">{date}{post.data.lang === 'zh' ? ' · 中文' : ''}</p>
-    <Content />
+    <header class="post-head">
+      <p class="meta">
+        {formatDate(post.data.date)}<span class="sep">·</span>{readingTime(post.body)}
+        {post.data.lang === 'zh' && <><span class="sep">·</span>中文</>}
+      </p>
+      <h1>{post.data.title}</h1>
+      <p class="dek">{post.data.description}</p>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <footer class="post-foot">
+      <nav class="post-nav">
+        {older && <a href={`/posts/${older.id}/`}>← {older.data.title}</a>}
+        {newer && <a href={`/posts/${newer.id}/`}>{newer.data.title} →</a>}
+      </nav>
+      <a href="/posts/">All posts</a>
+    </footer>
   </article>
 
-  <section class="newsletter">
-    <h2>Newsletter</h2>
-    <p>
-      One long read, roughly every two weeks — the task books, the scripts, and what broke on
-      the third run. No spam, unsubscribe in one click.
-    </p>
-    <!-- MailerLite embedded form (account 2692872, form MoU3tD, double opt-in on) -->
-    <div class="ml-embedded" data-form="MoU3tD"></div>
-  </section>
+  <Newsletter />
 </Base>

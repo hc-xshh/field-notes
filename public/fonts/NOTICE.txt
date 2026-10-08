@@ -1,0 +1,21 @@
+Fonts bundled with this site
+============================
+
+Both typefaces are licensed under the SIL Open Font License, Version 1.1
+(full text: ./OFL.txt) and are served from this domain instead of Google Fonts,
+because fonts.googleapis.com is not reachable from mainland China.
+
+Inter
+  Files: inter-var.woff2
+  Copyright (c) 2016 The Inter Project Authors (https://github.com/rsms/inter)
+  License: SIL Open Font License 1.1
+  Subset: latin
+
+Newsreader
+  Files: newsreader-var.woff2, newsreader-italic-var.woff2
+  Copyright (c) 2020 The Newsreader Project Authors
+    (https://github.com/productiontype/Newsreader)
+  License: SIL Open Font License 1.1
+  Subset: latin
+
+The woff2 files are unmodified subsets as published by the Google Fonts API.

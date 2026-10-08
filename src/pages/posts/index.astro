@@ -1,22 +1,39 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Newsletter from '../../components/Newsletter.astro';
 import { getCollection } from 'astro:content';
+import { formatDate, readingTime, sortByDate } from '../../lib/posts';
 
-const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+const posts = sortByDate(await getCollection('posts', ({ data }) => !data.draft));
 ---
 
 <Base title="Posts — Field Notes" description="Every post on Field Notes.">
-  <h1>Posts</h1>
-  <ul class="posts">
-    {posts.map((post) => (
-      <li>
-        <a href={`/posts/${post.id}/`}>{post.data.title}</a>
-        <span class="date">{post.data.date.toISOString().slice(0, 10)}</span>
-        <p class="desc">{post.data.description}</p>
-      </li>
-    ))}
-    {posts.length === 0 && <li><p class="desc">Nothing published yet.</p></li>}
-  </ul>
+
+  <div class="page-head">
+    <h1>Posts</h1>
+    <p>
+      Everything published so far. One long read every two weeks, each with something you can
+      re-run, copy, or argue against.
+    </p>
+  </div>
+
+  {posts.length === 0 ? (
+    <p class="empty">Nothing published yet.</p>
+  ) : (
+    <ul class="archive">
+      {posts.map((post) => (
+        <li>
+          <a href={`/posts/${post.id}/`}>
+            <span class="title">{post.data.title}</span>
+            <span class="when">
+              {formatDate(post.data.date)}<span class="sep">·</span>{readingTime(post.body)}
+            </span>
+            <p class="dek">{post.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <Newsletter />
 </Base>

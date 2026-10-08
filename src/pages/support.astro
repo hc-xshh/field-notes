@@ -1,39 +1,43 @@
 ---
 import Base from '../layouts/Base.astro';
+import Newsletter from '../components/Newsletter.astro';
 ---
 
 <Base
   title="Support — Field Notes"
   description="How to support the writing on Field Notes."
 >
-  <h1>Support</h1>
-
-  <p class="lede">
-    Everything on this site stays free to read. If a post saved you a week of work, there will
-    soon be a way to say thanks.
-  </p>
-
-  <div class="box">
-    <h2>One-off support</h2>
-    <form action="https://www.paypal.com/ncp/payment/8AWFEHFET7ESU" method="post" target="_blank" rel="noopener">
-      <button class="donate" type="submit">Support with PayPal</button>
-    </form>
-    <p class="tiny">
-      You set the amount. No PayPal account needed — card, Apple Pay or PayPal balance.
-      Opens on paypal.com in a new tab.
+  <div class="page-head">
+    <h1>Support</h1>
+    <p>
+      Everything on this site stays free to read. If a post saved you a week of work, here is the
+      way to say thanks.
     </p>
   </div>
 
-  <h2>What your support pays for</h2>
-  <p>
-    Nothing here is paywalled, and nothing will be. Support covers the domain, the hosting,
-    and the hours that go into the task books and scripts behind each post — the parts that
-    take weeks and are not visible in the published text.
-  </p>
+  <div class="card">
+    <h2>One-off support</h2>
+    <p>You set the amount. No PayPal account needed — card, Apple Pay or PayPal balance.</p>
+    <form action="https://www.paypal.com/ncp/payment/8AWFEHFET7ESU" method="post" target="_blank" rel="noopener">
+      <p><button class="donate" type="submit">Support with PayPal</button></p>
+    </form>
+    <p class="tiny">Opens on paypal.com in a new tab.</p>
+  </div>
 
-  <h2>Other ways to help</h2>
-  <p>
-    Reading, arguing with the method in the comments where the post is discussed, and sending
-    the post to one person who needs it — all of that moves this further than a tip does.
-  </p>
+  <div class="prose">
+    <h2>What your support pays for</h2>
+    <p>
+      Nothing here is paywalled, and nothing will be. Support covers the domain, the hosting,
+      and the hours that go into the task books and scripts behind each post — the parts that
+      take weeks and are not visible in the published text.
+    </p>
+
+    <h2>Other ways to help</h2>
+    <p>
+      Reading, arguing with the method in the comments where the post is discussed, and sending
+      the post to one person who needs it — all of that moves this further than a tip does.
+    </p>
+  </div>
+
+  <Newsletter />
 </Base>

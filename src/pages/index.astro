@@ -1,39 +1,55 @@
 ---
 import Base from '../layouts/Base.astro';
+import Newsletter from '../components/Newsletter.astro';
 import { getCollection } from 'astro:content';
+import { formatDate, readingTime, sortByDate } from '../lib/posts';
 
-const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+const posts = sortByDate(await getCollection('posts', ({ data }) => !data.draft));
+const [lead, ...rest] = posts;
 ---
 
 <Base>
-  <h1>Testing AI tooling for a living, writing about it in public.</h1>
-  <p class="lede">
-    I run structured evaluations of AI coding agents and data pipelines — the kind of work where
-    the interesting part is never the demo, but what breaks on the third run. This site collects
-    the method: task books, acceptance scripts, failure taxonomies, and the numbers that come out.
-  </p>
-
-  <h2>Latest</h2>
-  <ul class="posts">
-    {posts.slice(0, 5).map((post) => (
-      <li>
-        <a href={`/posts/${post.id}/`}>{post.data.title}</a>
-        <span class="date">{post.data.date.toISOString().slice(0, 10)}</span>
-        <p class="desc">{post.data.description}</p>
-      </li>
-    ))}
-    {posts.length === 0 && <li><p class="desc">First post is being written.</p></li>}
-  </ul>
-
-  <section class="newsletter">
-    <h2>Newsletter</h2>
-    <p>
-      One long read, roughly every two weeks — the task books, the scripts, and what broke on
-      the third run. No spam, unsubscribe in one click.
+  <section class="intro">
+    <h1>Testing AI tooling for a living, writing about it in public.</h1>
+    <p class="lede">
+      I run structured evaluations of AI coding agents and data pipelines — the kind of work where
+      the interesting part is never the demo, but what breaks on the third run. This site collects
+      the method: task books, acceptance scripts, failure taxonomies, and the numbers that come out.
     </p>
-    <!-- MailerLite embedded form (account 2692872, form MoU3tD, double opt-in on) -->
-    <div class="ml-embedded" data-form="MoU3tD"></div>
   </section>
+
+  <section class="latest">
+    <p class="section-label">Latest</p>
+
+    {lead ? (
+      <a class="lead" href={`/posts/${lead.id}/`}>
+        <h3>{lead.data.title}</h3>
+        <p class="dek">{lead.data.description}</p>
+        <p class="meta">
+          {formatDate(lead.data.date)}<span class="sep">·</span>{readingTime(lead.body)}
+        </p>
+      </a>
+    ) : (
+      <p class="empty">The first post is being written.</p>
+    )}
+
+    {rest.length > 0 && (
+      <>
+        <ul class="archive">
+          {rest.slice(0, 4).map((post) => (
+            <li>
+              <a href={`/posts/${post.id}/`}>
+                <span class="title">{post.data.title}</span>
+                <span class="when">{formatDate(post.data.date)}</span>
+                <p class="dek">{post.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="more"><a href="/posts/">All {posts.length} posts →</a></p>
+      </>
+    )}
+  </section>
+
+  <Newsletter />
 </Base>

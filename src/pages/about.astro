@@ -1,38 +1,47 @@
 ---
 import Base from '../layouts/Base.astro';
+import Newsletter from '../components/Newsletter.astro';
 ---
 
 <Base title="About — Field Notes" description="Who writes here and why.">
-  <h1>About</h1>
 
-  <p>
-    I work on AI tooling evaluation: building the task books, acceptance scripts and reporting
-    pipelines that decide whether an AI coding agent is actually usable, or only looks usable in
-    the demo.
-  </p>
+  <div class="page-head">
+    <h1>About</h1>
+    <p>Who writes here, what gets published, and what stays out.</p>
+  </div>
 
-  <p>
-    Field Notes is where the reusable part of that work goes — the method rather than the
-    announcement. If a number appears here, it came out of a script that can be re-run.
-  </p>
+  <div class="prose">
+    <p>
+      I work on AI tooling evaluation: building the task books, acceptance scripts and reporting
+      pipelines that decide whether an AI coding agent is actually usable, or only looks usable in
+      the demo.
+    </p>
 
-  <h2>What you will and will not find</h2>
+    <p>
+      Field Notes is where the reusable part of that work goes — the method rather than the
+      announcement. If a number appears here, it came out of a script that can be re-run.
+    </p>
 
-  <p>
-    Published: evaluation methodology, failure taxonomies, pipeline notes, and the occasional
-    write-up of something that broke in a way worth remembering.
-  </p>
+    <h2>What you will and will not find</h2>
 
-  <p>
-    Not published: anything under an NDA, anything about a specific employer's internals, and
-    anything I have not been able to reproduce myself.
-  </p>
+    <p>
+      Published: evaluation methodology, failure taxonomies, pipeline notes, and the occasional
+      write-up of something that broke in a way worth remembering.
+    </p>
 
-  <h2>Contact</h2>
+    <p>
+      Not published: anything under an NDA, anything about a specific employer's internals, and
+      anything I have not been able to reproduce myself.
+    </p>
 
-  <p>
-    There is no public address here yet. For now the fastest way to reach me is a reply on
-    whichever platform you found the post — those I read myself.
-  </p>
-  <!-- TODO(contact): add a public address once one is set up (deferred by the author, 2026-10-07). -->
+    <h2>Contact</h2>
+
+    <p>
+      There is no public address here yet. For now the fastest way to reach me is a reply on
+      whichever platform you found the post — those I read myself.
+    </p>
+    <!-- TODO(contact): add a public address once one is set up (deferred by the author, 2026-10-07). -->
+  </div>
+
+  <Newsletter />
 </Base>
