@@ -15,6 +15,9 @@ That difference is the whole point, and it comes with a cost: it is slower. So t
 something a reader can re-run, copy, or argue against — a task book, a scoring rule, a
 failure taxonomy, the script that computed the number.
 
+The three posts published alongside this one are an opening batch. The fortnightly rhythm
+starts after them.
+
 **Numbers come from scripts, not from impressions.** If a post says a tool passed 39 out of 39,
 there is a script that produced that 39, and I will say what it could not see. Where I have not
 verified something, the post says so in those words.

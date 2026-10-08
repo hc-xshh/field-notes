@@ -1,0 +1,19 @@
+host	url	code	total_s	connect_s	tls_s	bytes
+Google Fonts CSS	https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap	200	1.002026	0.000988	0.588695	916
+Google Fonts files	https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2	200	1.341629	0.000951	0.896249	21624
+fonts.bunny.net	https://fonts.bunny.net/css?family=inter:400,700	200	0.942116	0.001022	0.748853	5872
+jsDelivr	https://cdn.jsdelivr.net/npm/astro/package.json	200	2.162987	0.033234	1.550052	8317
+unpkg	https://unpkg.com/astro/package.json	200	3.709787	0.034593	2.138062	8317
+npm registry	https://registry.npmjs.org/astro	200	8.00192	0.001158	0.96252	889016
+npmmirror	https://registry.npmmirror.com/astro	200	2.921939	0.001578	0.070292	9574743
+cdnjs	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js	200	1.526547	0.035276	0.581836	87533
+Tailwind CDN	https://cdn.tailwindcss.com/	200	4.648262	0.032763	1.064899	407279
+MailerLite widget JS	https://assets.mailerlite.com/js/universal.js	200	1.572051	0.000997	0.806543	52683
+MailerLite API	https://api.mailerlite.com/api/v2/	401	2.012436	0.032863	1.177759	45
+github.com	https://github.com/withastro/astro	200	4.29077	0.001332	0.771803	389096
+raw.githubusercontent	https://raw.githubusercontent.com/withastro/astro/main/README.md	200	2.294817	0.001033	0.910338	8349
+Cloudflare API	https://api.cloudflare.com/client/v4/	400	1.100132	0.002344	0.782347	104
+Cloudflare Pages (Field Notes)	https://field-notes-6cd.pages.dev/	200	1.129889	0.001143	0.736132	5363
+Cloudflare Pages (daily-hub)	https://daily-hub-xshh.pages.dev/	200	1.334958	0.001292	1.140686	954
+Google (baseline)	https://www.google.com/	200	2.78186	0.002298	1.338073	85069
+r.jina.ai	https://r.jina.ai/https://example.com	200	1.777066	0.001266	1.372468	321

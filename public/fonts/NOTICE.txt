@@ -2,8 +2,10 @@ Fonts bundled with this site
 ============================
 
 Both typefaces are licensed under the SIL Open Font License, Version 1.1
-(full text: ./OFL.txt) and are served from this domain instead of Google Fonts,
-because fonts.googleapis.com is not reachable from mainland China.
+(full text: ./OFL.txt) and are served from this domain rather than from a font
+CDN. Reason: a third-party host is one more network path that cannot be verified
+for the reader, so the files ship with the site and the only path involved is
+the one that already delivered the page.
 
 Inter
   Files: inter-var.woff2
