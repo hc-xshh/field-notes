@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
-"""Reachability + latency of the hosts a static site depends on, from this
-machine, direct connection (no proxy). Each host is tried twice; the faster
-attempt is reported. Writes a TSV next to itself.
+"""Reachability + latency of the hosts a static site depends on, from this machine.
+
+What "direct" means here, and what it does not: this clears the proxy environment
+variables, which stops curl from using an explicit proxy. It does NOT bypass a
+tunnel-mode proxy (TUN + policy routing), which captures traffic below the
+application. On a machine set up that way, requests to foreign hosts still leave
+through the proxy, and the only way to see it is to compare the exit address seen
+by a foreign service with the address seen by a domestic one. So the script
+records both addresses at the top of the output file: if they differ, the run is
+split-path and the numbers for foreign hosts are proxy numbers.
 
 Usage: python3 bench_hosts.py [--proxy]
 """
@@ -38,6 +45,25 @@ if USE_PROXY:
     env["NO_PROXY"] = "127.0.0.1,localhost"
 
 rows = []
+
+
+def exit_ip(url):
+    try:
+        return subprocess.run(["curl", "-sS", "-m", "8", url], capture_output=True,
+                              text=True, env=env, timeout=20).stdout.strip()[:80]
+    except Exception as e:
+        return f"err:{type(e).__name__}"
+
+
+# Record which way packets actually leave, before measuring anything.
+foreign_exit = exit_ip("https://api.ipify.org")
+domestic_exit = exit_ip("https://myip.ipip.net")
+split_path = foreign_exit not in domestic_exit
+print(f"exit address seen by a foreign service: {foreign_exit}")
+print(f"exit address seen by a domestic service: {domestic_exit}")
+print(f"split path: {split_path} "
+      f"({'foreign hosts are going through a proxy' if split_path else 'one path'})\n")
+
 print(f"{'host':<34}{'code':>6}{'t_total':>9}{'t_connect':>11}{'tls':>8}{'bytes':>10}  attempts")
 print("-" * 92)
 for label, url in HOSTS:
@@ -69,6 +95,9 @@ for label, url in HOSTS:
 out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                         "bench_proxy.tsv" if USE_PROXY else "bench_direct.tsv")
 with open(out_path, "w") as f:
+    f.write(f"# foreign_exit\t{foreign_exit}\n")
+    f.write(f"# domestic_exit\t{domestic_exit}\n")
+    f.write(f"# split_path\t{split_path}\n")
     f.write("host\turl\tcode\ttotal_s\tconnect_s\ttls_s\tbytes\n")
     for r in rows:
         f.write("\t".join("" if v is None else str(v) for v in r) + "\n")
