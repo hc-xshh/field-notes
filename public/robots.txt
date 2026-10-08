@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://field-notes-6cd.pages.dev/sitemap-index.xml

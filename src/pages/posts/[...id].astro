@@ -14,12 +14,29 @@ export async function getStaticPaths() {
 
 const { post, newer, older } = Astro.props;
 const { Content } = await render(post);
+
+const postUrl = new URL(`/posts/${post.id}/`, Astro.site).href;
+const schema = {
+  '@type': 'BlogPosting',
+  '@id': `${postUrl}#article`,
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  inLanguage: post.data.lang === 'zh' ? 'zh' : 'en',
+  // The site is pseudonymous, so the byline is the author name we have —
+  // better an honest pen name than an invented person.
+  author: { '@type': 'Person', name: 'Field Notes' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
+  url: postUrl,
+  isPartOf: { '@id': `${Astro.site.href}#website` },
+};
 ---
 
 <Base
   title={`${post.data.title} — Field Notes`}
   description={post.data.description}
   kind="article"
+  schema={schema}
 >
   <article>
     <header class="post-head">
