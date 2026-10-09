@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { getCollection } from 'astro:content';
+import { TAGS, tagName } from '../../lib/tags';
+import { sortByDate } from '../../lib/posts';
+
+const posts = sortByDate(await getCollection('posts', ({ data }) => !data.draft));
+const countFor = (slug: string) => posts.filter((post) => post.data.tags.includes(slug as never)).length;
+const used = TAGS.filter((tag) => countFor(tag.slug) > 0);
+const orphans = posts.filter((post) => post.data.tags.length === 0);
+---
+
+<Base
+  title="Tags — Field Notes"
+  description="Cross-section tags: the price posts, the dataset posts, the ones where the work was cross-checking two sources."
+>
+
+  <div class="page-head">
+    <p class="section-label">Tags</p>
+    <h1>Tags</h1>
+    <p>
+      A section answers <em>what kind of thing is this</em>; a tag answers <em>what else is like it</em>,
+      across sections. A post has one section and any number of tags.
+    </p>
+  </div>
+
+  <ul class="topic-grid">
+    {used.map((tag) => (
+      <li>
+        <a href={`/tags/${tag.slug}/`}>
+          <span class="name">{tag.name}</span>
+          <span class="count">
+            {countFor(tag.slug)} {countFor(tag.slug) === 1 ? 'post' : 'posts'}
+          </span>
+          <p class="dek">{tag.blurb}</p>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  {orphans.length > 0 && (
+    <p class="note">
+      {orphans.length === 1 ? 'One post has' : `${orphans.length} posts have`} no tag yet:
+      {orphans.map((post) => (
+        <> <a href={`/posts/${post.id}/`}>{post.data.title}</a></>
+      ))}
+    </p>
+  )}
+
+  <p class="more"><a href="/topics/">All sections →</a></p>
+
+  <Newsletter />
+</Base>

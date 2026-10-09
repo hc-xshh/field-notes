@@ -1,0 +1,24 @@
+---
+// Table of contents for a post. Top-level sections only: a 12-section piece
+// listed down to its subsections turns into a wall of text, and the
+// subsections are visible on the page anyway.
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+}
+const { headings } = Astro.props;
+const items = headings.filter((h) => h.depth === 2);
+const show = items.length >= 4;
+---
+
+{show && (
+  <nav class="toc" aria-labelledby="toc-title">
+    <p class="toc-title" id="toc-title">On this page</p>
+    <ol>
+      {items.map((h) => (
+        <li>
+          <a href={`#${h.slug}`}>{h.text}</a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

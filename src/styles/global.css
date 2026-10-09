@@ -353,6 +353,55 @@ main { padding: 2.75rem 0 4rem; }
 
 .prose { max-width: var(--measure); }
 
+/* Living page marker: when the numbers were last read from the source. */
+.post-head .living {
+  margin: 1.05rem 0 0;
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+
+/* Table of contents — top-level sections only, two columns once there is room. */
+.toc {
+  max-width: var(--measure);
+  margin: 0 0 2.4rem;
+  padding: .85rem 1.15rem .95rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.toc-title {
+  margin: 0 0 .5rem;
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.toc ol { margin: 0; padding: 0; list-style: none; }
+
+.toc li {
+  margin: .2rem 0;
+  font-size: .9125rem;
+  line-height: 1.45;
+  break-inside: avoid;
+}
+
+.toc a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+@media (min-width: 46rem) {
+  .toc ol { columns: 2; column-gap: 1.8rem; }
+}
+
 .prose p { margin: 0 0 1.35rem; }
 
 .prose h2,
@@ -703,6 +752,19 @@ button.donate:active { transform: translateY(1px); }
 }
 
 .badge:hover { text-decoration: none; border-color: var(--accent); }
+
+/* Topic badge plus tag chips on one line. */
+.badge-row { margin: 0 0 .7rem; }
+
+.badge-row .badge { margin: 0 .3rem .3rem 0; }
+
+.badge.tag {
+  color: var(--ink-soft);
+  background: var(--surface-2);
+  border-color: var(--rule);
+}
+
+.badge.tag:hover { color: var(--accent); border-color: var(--accent); }
 
 .page-head .section-label { margin: 0 0 .6rem; padding: 0; border-bottom: 0; }
 

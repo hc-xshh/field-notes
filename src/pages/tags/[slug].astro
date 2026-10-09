@@ -1,0 +1,53 @@
+---
+import Base from '../../layouts/Base.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { getCollection } from 'astro:content';
+import { TAGS, tagName } from '../../lib/tags';
+import { topicName } from '../../lib/topics';
+import { formatDate, readingTime, sortByDate } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  return TAGS.map((tag) => ({ params: { slug: tag.slug }, props: { tag } }));
+}
+
+const { tag } = Astro.props;
+const posts = sortByDate(
+  await getCollection('posts', ({ data }) => !data.draft && data.tags.includes(tag.slug as never)),
+);
+---
+
+<Base
+  title={`${tag.name} — Field Notes`}
+  description={tag.blurb}
+  ogImage="/og/default.png"
+>
+
+  <div class="page-head">
+    <p class="section-label"><a href="/tags/">Tag</a></p>
+    <h1>{tag.name}</h1>
+    <p>{tag.blurb}</p>
+  </div>
+
+  {posts.length === 0 ? (
+    <p class="empty">Nothing carries this tag right now.</p>
+  ) : (
+    <ul class="archive">
+      {posts.map((post) => (
+        <li>
+          <a href={`/posts/${post.id}/`}>
+            <span class="title">{post.data.title}</span>
+            <span class="when">
+              {topicName(post.data.topic)}<span class="sep">·</span>{formatDate(post.data.date)}
+              <span class="sep">·</span>{readingTime(post.body)}
+            </span>
+            <p class="dek">{post.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <p class="more"><a href="/topics/">All sections →</a> <span class="sep">·</span> <a href="/tags/">All tags →</a></p>
+
+  <Newsletter />
+</Base>

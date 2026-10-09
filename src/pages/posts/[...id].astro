@@ -1,9 +1,11 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Newsletter from '../../components/Newsletter.astro';
+import Toc from '../../components/Toc.astro';
 import { getCollection, render } from 'astro:content';
 import { formatDate, readingTime, sortByDate } from '../../lib/posts';
 import { topicName } from '../../lib/topics';
+import { tagName } from '../../lib/tags';
 
 export async function getStaticPaths() {
   const posts = sortByDate(await getCollection('posts', ({ data }) => !data.draft));
@@ -14,15 +16,26 @@ export async function getStaticPaths() {
 }
 
 const { post, newer, older } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 
 const postUrl = new URL(`/posts/${post.id}/`, Astro.site).href;
+// How often a living page is re-read, in the words the reader sees.
+const cadenceLabel: Record<string, string> = {
+  weekly: 're-checked weekly',
+  monthly: 're-checked monthly',
+  quarterly: 're-checked quarterly',
+  annual: 're-checked yearly',
+  'on-change': 're-checked when the rule changes',
+};
 const schema = {
   '@type': 'BlogPosting',
   '@id': `${postUrl}#article`,
   headline: post.data.title,
   description: post.data.description,
   datePublished: post.data.date.toISOString(),
+  // A living page that has been re-checked is a modified page; saying so is the
+  // point of keeping the date.
+  dateModified: (post.data.updated ?? post.data.data_checked ?? post.data.date).toISOString(),
   inLanguage: post.data.lang === 'zh' ? 'zh' : 'en',
   // The site is pseudonymous, so the byline is the author name we have —
   // better an honest pen name than an invented person.
@@ -43,14 +56,26 @@ const schema = {
 >
   <article>
     <header class="post-head">
-      <a class="badge" href={`/topics/${post.data.topic}/`}>{topicName(post.data.topic)}</a>
+      <p class="badge-row">
+        <a class="badge" href={`/topics/${post.data.topic}/`}>{topicName(post.data.topic)}</a>
+        {post.data.tags.map((tag) => (
+          <a class="badge tag" href={`/tags/${tag}/`}>{tagName(tag)}</a>
+        ))}
+      </p>
       <p class="meta">
         {formatDate(post.data.date)}<span class="sep">·</span>{readingTime(post.body)}
         {post.data.lang === 'zh' && <><span class="sep">·</span>中文</>}
       </p>
       <h1>{post.data.title}</h1>
       <p class="dek">{post.data.description}</p>
+      {post.data.refresh && (
+        <p class="living">
+          Living page — numbers read from the sources on {formatDate(post.data.data_checked ?? post.data.date)}, {cadenceLabel[post.data.refresh]}.
+        </p>
+      )}
     </header>
+
+    <Toc headings={headings} />
 
     <div class="prose">
       <Content />

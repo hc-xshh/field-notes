@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import rehypeSlug from 'rehype-slug';
 
 // Site URL is the temporary Cloudflare Pages subdomain.
 // Swap it for the real domain when one is bought.
@@ -32,6 +33,10 @@ function rehypeTableWrap() {
 export default defineConfig({
   site: 'https://field-notes-6cd.pages.dev',
   build: { format: 'directory' },
-  markdown: { rehypePlugins: [rehypeTableWrap] },
+  // rehype-slug gives every heading an id derived the same way Astro derives
+  // the slugs it reports in render()'s `headings`, so the table of contents
+  // links to anchors that actually exist. Writing our own slugger is how those
+  // links silently rot.
+  markdown: { rehypePlugins: [rehypeTableWrap, rehypeSlug] },
   integrations: [sitemap()],
 });
