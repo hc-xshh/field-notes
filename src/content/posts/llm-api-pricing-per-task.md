@@ -4,6 +4,9 @@ description: I priced three concrete jobs on seven model APIs using each vendor'
 date: 2026-10-09
 lang: en
 topic: ai-and-engineering
+tags: [ai-evaluation, prices]
+refresh: monthly
+data_checked: 2026-10-09
 ---
 
 Every vendor publishes a price per million tokens. Almost none publishes what a job costs; the number that decides whether a feature ships is left as arithmetic homework.

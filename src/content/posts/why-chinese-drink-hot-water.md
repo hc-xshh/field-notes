@@ -4,6 +4,7 @@ description: The history side of the habit — tea, fuel, bacteriology and slow 
 date: 2026-10-09
 lang: en
 topic: life-in-china
+tags: [everyday-china]
 ---
 
 Ask why people in China drink hot water and you get two answers, both delivered with

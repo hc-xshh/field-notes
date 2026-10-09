@@ -4,6 +4,7 @@ description: The scope of Field Notes, how often it updates, and why the numbers
 date: 2026-10-07
 lang: en
 topic: ai-and-engineering
+tags: [site-notes]
 ---
 
 Most writing about AI tooling is written by people who watched a demo. This site is written

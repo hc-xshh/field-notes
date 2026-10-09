@@ -4,6 +4,7 @@ description: A responsibility map for EXW, FCA, FOB, CFR, CIF, DAP and DDP — w
 date: 2026-10-09
 lang: en
 topic: supply-chain
+tags: [trade-and-logistics, reference-pages]
 ---
 
 Most arguments I have had about a purchase order were arguments about one thing: the point at which the seller stops being responsible. Incoterms 2020 answers that in eleven three-letter terms ([ICC, Incoterms 2020](https://iccwbo.org/business-solutions/incoterms-rules/incoterms-2020/), retrieved 9 October 2026). Three letters are cheap to type onto a quotation and expensive to misread, so the map below is the one I keep next to the file.

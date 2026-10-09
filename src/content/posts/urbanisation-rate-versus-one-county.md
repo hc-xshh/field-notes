@@ -4,6 +4,9 @@ description: China's statistics office says 67.89 per cent of the country lives 
 date: 2026-10-09
 lang: en
 topic: data-and-the-world
+tags: [open-data, sources-and-method]
+refresh: annual
+data_checked: 2026-10-09
 ---
 
 Ask what share of China is urban and two official sources answer differently. The National Bureau of Statistics (NBS) puts the end of 2025 at 67.89 per cent ([2025 statistical communiqué](https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html), 2026-02-28). The World Bank's World Development Indicators put the same year at 66.34 per cent ([WDI, indicator SP.URB.TOTL.IN.ZS](https://api.worldbank.org/v2/country/CHN/indicator/SP.URB.TOTL.IN.ZS?format=json), retrieved 2026-10-09, series last updated 2026-10-08).

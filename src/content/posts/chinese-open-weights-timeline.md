@@ -4,6 +4,9 @@ description: Sixty-seven open-weight releases from Chinese labs, each with a dat
 date: 2026-10-09
 lang: en
 topic: ai-and-engineering
+tags: [open-data]
+refresh: quarterly
+data_checked: 2026-10-09
 ---
 
 This is a list of dates, not an argument. Every row is a model whose weights were

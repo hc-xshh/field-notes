@@ -4,6 +4,9 @@ description: Early market, wet market, neighbourhood shop, warehouse club, deliv
 date: 2026-10-09
 lang: en
 topic: life-in-china
+tags: [prices, everyday-china]
+refresh: monthly
+data_checked: 2026-10-09
 ---
 
 The same pork carried three published prices in one Chinese city in February 2026: 8.14 yuan per 500 grams wholesale, 14.07 at the farm market, 15.03 at a chain supermarket counter. Vegetables that month ran 1.55 wholesale, 3.94 at a community vegetable shop and 4.52 in a supermarket, with no farm-market column published at all ([a municipal development and reform commission bulletin](https://fgw.beijing.gov.cn/gzdt/fgzs/gzdt/202603/t20260317_4559408.htm), 2026-03-17).

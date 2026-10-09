@@ -4,6 +4,9 @@ description: 五件写了具体型号的东西，中国官方标价与美加官�
 date: 2026-10-09
 lang: zh
 topic: chinese-abroad
+tags: [prices, sources-and-method]
+refresh: quarterly
+data_checked: 2026-10-09
 ---
 
 比价表最容易骗人的地方，是数字旁边空着的那一块。

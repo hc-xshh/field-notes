@@ -4,6 +4,9 @@ description: The same lithium-ion battery shipments counted by the exporter and 
 date: 2026-10-09
 lang: en
 topic: data-and-the-world
+tags: [sources-and-method, open-data]
+refresh: annual
+data_checked: 2026-10-09
 ---
 
 Every trade flow of any size is counted twice: the exporting country files an export, the importing country files an import. Both are official, both are published, and they rarely agree. The gap is called mirror statistics.

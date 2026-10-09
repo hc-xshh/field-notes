@@ -4,6 +4,9 @@ description: 多伦多、温哥华、纽约、洛杉矶、悉尼、墨尔本、�
 date: 2026-10-09
 lang: zh
 topic: chinese-abroad
+tags: [prices]
+refresh: quarterly
+data_checked: 2026-10-09
 ---
 
 常见的那种"某城市一个月花多少钱"的句子，信息量接近零。你不知道那个数包含什么，也不知道它是什么时候的数，更不知道它指的是市中心还是郊区、单间还是一居、含不含水电。

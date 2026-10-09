@@ -4,6 +4,7 @@ description: A field-by-field pass over a quotation for a custom part — what i
 date: 2026-10-09
 lang: en
 topic: supply-chain
+tags: [trade-and-logistics, sources-and-method]
 ---
 
 I buy small runs of custom parts from factories in China. At that size there is no portal. The

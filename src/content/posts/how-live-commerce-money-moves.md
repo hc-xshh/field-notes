@@ -4,6 +4,7 @@ description: The split chain behind a livestream sale — platform fee, promotio
 date: 2026-10-09
 lang: en
 topic: supply-chain
+tags: [trade-and-logistics, rails-and-infrastructure]
 ---
 
 Plenty of English writing explains what a livestream checkout looks like. Almost none explains the middle: who takes what out of a completed order, out of which number, and how long the seller waits before the money is theirs.

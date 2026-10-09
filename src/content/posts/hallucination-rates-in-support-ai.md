@@ -4,6 +4,7 @@ description: Five kinds of error, three ways one accuracy figure misleads, and w
 date: 2026-10-09
 lang: en
 topic: ai-and-engineering
+tags: [ai-evaluation]
 ---
 
 The way I test a support or ticketing system is against a task book, not a demo. The number people

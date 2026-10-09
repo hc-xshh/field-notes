@@ -4,6 +4,9 @@ description: China's official express volume and the world's e-commerce parcel t
 date: 2026-10-09
 lang: en
 topic: data-and-the-world
+tags: [open-data, rails-and-infrastructure]
+refresh: annual
+data_checked: 2026-10-09
 ---
 
 Two numbers get quoted at each other in writing about parcel logistics: China's express delivery volume from the State Post Bureau, and the world's e-commerce parcel count from a market research firm. They get put in one sentence, divided, and turned into a percentage.

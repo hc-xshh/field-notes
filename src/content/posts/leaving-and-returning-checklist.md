@@ -4,6 +4,9 @@ description: 回国收尾和出国准备各一张清单，每行只给官方入�
 date: 2026-10-09
 lang: zh
 topic: chinese-abroad
+tags: [everyday-china, reference-pages]
+refresh: on-change
+data_checked: 2026-10-09
 ---
 
 手续这件事，我只看发文机关自己的页面。中介的文章常常写得更清楚，可它什么时候跟着政策改，我验证不了；官方页面排版难看，但它一改我就能看见。

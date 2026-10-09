@@ -4,6 +4,7 @@ description: An eval set is an instrument with a purpose, a scoring rule, a cali
 date: 2026-10-09
 lang: en
 topic: ai-and-engineering
+tags: [ai-evaluation, sources-and-method]
 ---
 
 An eval set is an instrument. It has a purpose, a scoring rule, a calibration record and an expiry date. Treating it as a file you download is where the trouble starts: the file already made those decisions without writing them down.

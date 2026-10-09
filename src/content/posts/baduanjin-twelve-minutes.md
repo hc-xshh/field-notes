@@ -4,6 +4,7 @@ description: A step-by-step walk through the eight-section brocade — a timelin
 date: 2026-10-09
 lang: en
 topic: life-in-china
+tags: [everyday-china, reference-pages]
 ---
 
 Stand in a park here before breakfast and you will see the same eight movements, done at the same

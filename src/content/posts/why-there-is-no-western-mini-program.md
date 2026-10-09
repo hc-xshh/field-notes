@@ -4,6 +4,7 @@ description: A mini program inherits its identity and its payment rail from the 
 date: 2026-10-09
 lang: en
 topic: ai-and-engineering
+tags: [rails-and-infrastructure]
 ---
 
 The usual version of this question is about super apps, and it has been answered at length by people with better data than mine; mine is narrower. A mini program is a small bundle of code that runs inside somebody else's application, and the question is which parts of that arrangement exist in what Apple and Google ship.

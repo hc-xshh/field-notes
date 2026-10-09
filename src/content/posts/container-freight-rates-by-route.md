@@ -4,6 +4,9 @@ description: Latest public container freight index readings for the main Asia-ou
 date: 2026-10-09
 lang: en
 topic: supply-chain
+tags: [trade-and-logistics, prices, sources-and-method]
+refresh: monthly
+data_checked: 2026-10-09
 ---
 
 Two public indices cover the lanes I care about. Both publish weekly, both are free to read, and they disagree by several hundred dollars on lanes that carry the same name. This page keeps the readings, the date on each, and the reasons they differ. Where a number was not available, the bottom of the page says so.

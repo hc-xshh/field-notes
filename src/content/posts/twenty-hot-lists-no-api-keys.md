@@ -4,6 +4,7 @@ description: An aggregator that collects 20 trending lists every night. Six sour
 date: 2026-10-08
 lang: en
 topic: ai-and-engineering
+tags: [open-data]
 ---
 
 Every night at 04:30 a script on this machine collects the current front page of 20 platforms

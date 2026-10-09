@@ -4,6 +4,7 @@ description: High-speed rail and half-hour delivery read as temperament. They ar
 date: 2026-10-09
 lang: en
 topic: life-in-china
+tags: [everyday-china, rails-and-infrastructure]
 ---
 
 Two things visitors notice here within a day. Trains leave every few minutes and go where the

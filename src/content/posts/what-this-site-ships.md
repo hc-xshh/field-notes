@@ -4,6 +4,7 @@ description: 2,130 bytes of HTML, 1 KB of my own JavaScript, no framework. Then 
 date: 2026-10-08
 lang: en
 topic: ai-and-engineering
+tags: [site-notes, sources-and-method]
 ---
 
 The front page of this site is a 2,130-byte HTML document containing 91 elements. I wrote 1,022

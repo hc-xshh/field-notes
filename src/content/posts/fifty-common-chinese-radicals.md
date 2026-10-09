@@ -4,6 +4,7 @@ description: I counted how many of the 1,000 and 3,000 most common Chinese chara
 date: 2026-10-09
 lang: en
 topic: life-in-china
+tags: [everyday-china, reference-pages]
 ---
 
 Search for "most common Chinese radicals" and you get the same page over and over: a list of ten, fifty or a hundred radicals, a meaning next to each, sometimes a mnemonic, occasionally a colour-coded poster. What you never get is a number. The order is asserted, not shown, so you cannot tell whether the third radical on the list is third because someone counted or because it looked tidy there.
