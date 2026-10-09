@@ -3,6 +3,7 @@ title: Verifying an email signup end to end
 description: The form returned success. The subscriber appeared in the right group. The one thing that failed was in an inbox I do not control.
 date: 2026-10-08
 lang: en
+topic: ai-and-engineering
 ---
 
 This site has a signup form and a double opt-in. When you submit it, the mailing tool sends you a

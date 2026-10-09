@@ -1,0 +1,53 @@
+---
+import Base from '../../layouts/Base.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { getCollection } from 'astro:content';
+import { TOPICS } from '../../lib/topics';
+import { formatDate, readingTime, sortByDate } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  return TOPICS.map((topic) => ({ params: { slug: topic.slug }, props: { topic } }));
+}
+
+const { topic } = Astro.props;
+const posts = sortByDate(
+  await getCollection('posts', ({ data }) => !data.draft && data.topic === topic.slug),
+);
+---
+
+<Base
+  title={`${topic.name} — Field Notes`}
+  description={topic.tagline}
+  ogImage="/og/default.png"
+>
+
+  <div class="page-head">
+    <p class="section-label">Section</p>
+    <h1>{topic.name}</h1>
+    {topic.main && <p class="note">The main line — the section the newsletter carries.</p>}
+    {topic.lang === 'zh' && <p class="note">Written in Chinese.</p>}
+    <p>{topic.tagline}</p>
+  </div>
+
+  {posts.length === 0 ? (
+    <p class="empty">The first post in this section is being written.</p>
+  ) : (
+    <ul class="archive">
+      {posts.map((post) => (
+        <li>
+          <a href={`/posts/${post.id}/`}>
+            <span class="title">{post.data.title}</span>
+            <span class="when">
+              {formatDate(post.data.date)}<span class="sep">·</span>{readingTime(post.body)}
+            </span>
+            <p class="dek">{post.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <p class="more"><a href="/topics/">All sections →</a></p>
+
+  <Newsletter />
+</Base>

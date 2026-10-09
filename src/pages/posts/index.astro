@@ -3,36 +3,48 @@ import Base from '../../layouts/Base.astro';
 import Newsletter from '../../components/Newsletter.astro';
 import { getCollection } from 'astro:content';
 import { formatDate, readingTime, sortByDate } from '../../lib/posts';
+import { TOPICS } from '../../lib/topics';
 
 const posts = sortByDate(await getCollection('posts', ({ data }) => !data.draft));
+const byTopic = TOPICS.map((topic) => ({
+  topic,
+  posts: posts.filter((post) => post.data.topic === topic.slug),
+})).filter((group) => group.posts.length > 0);
 ---
 
-<Base title="Posts — Field Notes" description="Every post on Field Notes.">
+<Base title="Posts — Field Notes" description="Every post on Field Notes, grouped by section.">
 
   <div class="page-head">
     <h1>Posts</h1>
     <p>
-      Everything published so far. One long read every two weeks, each with something you can
-      re-run, copy, or argue against.
+      Everything published so far, grouped by section. One long read every two weeks or so, each
+      with something you can re-run, copy, or argue against.
     </p>
   </div>
 
   {posts.length === 0 ? (
     <p class="empty">Nothing published yet.</p>
   ) : (
-    <ul class="archive">
-      {posts.map((post) => (
-        <li>
-          <a href={`/posts/${post.id}/`}>
-            <span class="title">{post.data.title}</span>
-            <span class="when">
-              {formatDate(post.data.date)}<span class="sep">·</span>{readingTime(post.body)}
-            </span>
-            <p class="dek">{post.data.description}</p>
-          </a>
-        </li>
-      ))}
-    </ul>
+    byTopic.map(({ topic, posts: topicPosts }) => (
+      <section class="topic-block">
+        <p class="section-label">
+          <a href={`/topics/${topic.slug}/`}>{topic.name}</a>
+        </p>
+        <ul class="archive">
+          {topicPosts.map((post) => (
+            <li>
+              <a href={`/posts/${post.id}/`}>
+                <span class="title">{post.data.title}</span>
+                <span class="when">
+                  {formatDate(post.data.date)}<span class="sep">·</span>{readingTime(post.body)}
+                </span>
+                <p class="dek">{post.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
   )}
 
   <Newsletter />

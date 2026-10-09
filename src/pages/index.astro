@@ -3,18 +3,22 @@ import Base from '../layouts/Base.astro';
 import Newsletter from '../components/Newsletter.astro';
 import { getCollection } from 'astro:content';
 import { formatDate, readingTime, sortByDate } from '../lib/posts';
+import { TOPICS, topicName } from '../lib/topics';
 
 const posts = sortByDate(await getCollection('posts', ({ data }) => !data.draft));
 const [lead, ...rest] = posts;
+const countFor = (slug) => posts.filter((post) => post.data.topic === slug).length;
 ---
 
 <Base>
   <section class="intro">
-    <h1>Testing AI tooling for a living, writing about it in public.</h1>
+    <h1>Writing down what can be checked, from inside China.</h1>
     <p class="lede">
-      I run structured evaluations of AI coding agents and data pipelines — the kind of work where
-      the interesting part is never the demo, but what breaks on the third run. This site collects
-      the method: task books, acceptance scripts, failure taxonomies, and the numbers that come out.
+      I test AI tooling for a living. The rest of this site is the part of China that is hard to
+      see from outside: what a factory quote actually contains, what freight costs this month,
+      what a market stall charges, and where the number in a headline came from. Five sections,
+      one rule — if a number appears here, it came out of a script or a dataset that can be
+      re-run.
     </p>
   </section>
 
@@ -23,6 +27,7 @@ const [lead, ...rest] = posts;
 
     {lead ? (
       <a class="lead" href={`/posts/${lead.id}/`}>
+        <p class="meta">{topicName(lead.data.topic)}</p>
         <h3>{lead.data.title}</h3>
         <p class="dek">{lead.data.description}</p>
         <p class="meta">
@@ -49,6 +54,27 @@ const [lead, ...rest] = posts;
         <p class="more"><a href="/posts/">All {posts.length} posts →</a></p>
       </>
     )}
+  </section>
+
+  <section class="topics">
+    <p class="section-label">Sections</p>
+    <ul class="topic-grid">
+      {TOPICS.map((topic) => (
+        <li>
+          <a href={`/topics/${topic.slug}/`}>
+            <span class="name">
+              {topic.name}
+              {topic.main && <span class="tag">main line</span>}
+            </span>
+            <span class="count">
+              {countFor(topic.slug)} {countFor(topic.slug) === 1 ? 'post' : 'posts'}
+              {topic.lang === 'zh' && <> · 中文</>}
+            </span>
+            <p class="dek">{topic.tagline}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
 
   <Newsletter />

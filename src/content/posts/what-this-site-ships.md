@@ -3,6 +3,7 @@ title: What this site actually ships, and the widget I can't remove
 description: 2,130 bytes of HTML, 1 KB of my own JavaScript, no framework. Then the newsletter form loads jQuery, and the number stops being funny.
 date: 2026-10-08
 lang: en
+topic: ai-and-engineering
 ---
 
 The front page of this site is a 2,130-byte HTML document containing 91 elements. I wrote 1,022

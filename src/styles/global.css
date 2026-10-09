@@ -602,6 +602,108 @@ button.donate:active { transform: translateY(1px); }
   letter-spacing: .04em;
 }
 
+/* ==========================================================================
+   Sections (topic grid, section hubs, post badge)
+   ========================================================================== */
+
+.topics { margin-top: 3.25rem; }
+
+.topic-grid {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: .8rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.topic-grid a {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  height: 100%;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: inherit;
+  transition: border-color .18s var(--ease), transform .18s var(--ease);
+}
+
+.topic-grid a:hover {
+  text-decoration: none;
+  border-color: var(--rule-strong);
+  transform: translateY(-2px);
+}
+
+.topic-grid .name {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  flex-wrap: wrap;
+  font-family: var(--display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+.topic-grid a:hover .name { color: var(--accent); }
+
+.topic-grid .tag {
+  font-family: var(--mono);
+  font-size: .625rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-soft);
+  border-radius: 999px;
+  padding: .12rem .5rem;
+}
+
+.topic-grid .count {
+  font-family: var(--mono);
+  font-size: .6875rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.topic-grid .dek { margin: 0; color: var(--ink-soft); font-size: .875rem; line-height: 1.5; }
+
+.topic-block { margin-top: 2.25rem; }
+.topic-block .section-label a { color: var(--muted); }
+.topic-block .section-label a:hover { color: var(--accent); text-decoration: none; }
+
+.badge {
+  display: inline-block;
+  margin-bottom: .55rem;
+  font-family: var(--mono);
+  font-size: .6875rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-soft);
+  border-radius: 999px;
+  padding: .15rem .6rem;
+}
+
+.badge:hover { text-decoration: none; border-color: var(--accent); }
+
+.page-head .section-label { margin: 0 0 .6rem; padding: 0; border-bottom: 0; }
+
+.page-head p.note {
+  margin: 0 0 .7rem;
+  padding: 0;
+  border-bottom: 0;
+  font-size: .875rem;
+  color: var(--muted);
+}
+
+.post-nav-more { margin: 0; }
+.post-nav-more .sep { opacity: .5; padding: 0 .35em; }
+
 @media (max-width: 40rem) {
   .masthead { padding-top: 1.5rem; }
   .archive a { grid-template-columns: 1fr; }

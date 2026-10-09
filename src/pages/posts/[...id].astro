@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Newsletter from '../../components/Newsletter.astro';
 import { getCollection, render } from 'astro:content';
 import { formatDate, readingTime, sortByDate } from '../../lib/posts';
+import { topicName } from '../../lib/topics';
 
 export async function getStaticPaths() {
   const posts = sortByDate(await getCollection('posts', ({ data }) => !data.draft));
@@ -41,6 +42,7 @@ const schema = {
 >
   <article>
     <header class="post-head">
+      <a class="badge" href={`/topics/${post.data.topic}/`}>{topicName(post.data.topic)}</a>
       <p class="meta">
         {formatDate(post.data.date)}<span class="sep">·</span>{readingTime(post.body)}
         {post.data.lang === 'zh' && <><span class="sep">·</span>中文</>}
@@ -58,7 +60,11 @@ const schema = {
         {older && <a href={`/posts/${older.id}/`}>← {older.data.title}</a>}
         {newer && <a href={`/posts/${newer.id}/`}>{newer.data.title} →</a>}
       </nav>
-      <a href="/posts/">All posts</a>
+      <p class="post-nav-more">
+        <a href={`/topics/${post.data.topic}/`}>More in {topicName(post.data.topic)}</a>
+        <span class="sep">·</span>
+        <a href="/posts/">All posts</a>
+      </p>
     </footer>
   </article>
 

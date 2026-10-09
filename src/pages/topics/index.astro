@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { getCollection } from 'astro:content';
+import { TOPICS } from '../../lib/topics';
+import { sortByDate } from '../../lib/posts';
+
+const posts = sortByDate(await getCollection('posts', ({ data }) => !data.draft));
+const countFor = (slug) => posts.filter((post) => post.data.topic === slug).length;
+---
+
+<Base
+  title="Sections — Field Notes"
+  description="The five sections of Field Notes, and which one the newsletter carries."
+>
+
+  <div class="page-head">
+    <h1>Sections</h1>
+    <p>
+      One site, five sections, five different reasons to read. Everything is published in the open;
+      the newsletter carries the main line only.
+    </p>
+  </div>
+
+  <ul class="topic-grid">
+    {TOPICS.map((topic) => (
+      <li>
+        <a href={`/topics/${topic.slug}/`}>
+          <span class="name">
+            {topic.name}
+            {topic.main && <span class="tag">main line</span>}
+          </span>
+          <span class="count">
+            {countFor(topic.slug)} {countFor(topic.slug) === 1 ? 'post' : 'posts'}
+            {topic.lang === 'zh' && <> · 中文</>}
+          </span>
+          <p class="dek">{topic.tagline}</p>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <p class="more"><a href="/posts/">Every post →</a></p>
+
+  <Newsletter />
+</Base>

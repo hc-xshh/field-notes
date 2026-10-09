@@ -3,7 +3,7 @@ import '../styles/global.css';
 
 const {
   title = 'Field Notes',
-  description = 'Notes on building, testing and shipping AI tooling — written from China, for a global audience.',
+  description = 'Notes from inside China: AI tooling tested for a living, plus supply chains, prices, open data and everyday life — with the numbers you can re-run.',
   kind = 'website',
   schema = null,
   noindex = false,
@@ -34,6 +34,7 @@ const graph = [
 const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
 
 const nav = [
+  { href: '/topics/', label: 'Sections' },
   { href: '/posts/', label: 'Posts' },
   { href: '/about/', label: 'About' },
   { href: '/support/', label: 'Support' },
@@ -74,7 +75,8 @@ const isCurrent = (href) => path === href || (href !== '/' && path.startsWith(hr
     <meta name="theme-color" content="#101013" media="(prefers-color-scheme: dark)" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="alternate" type="application/rss+xml" title="Field Notes" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Field Notes (main line)" href="/rss-main.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Field Notes (all sections)" href="/rss.xml" />
 
     <!-- Set the theme before first paint so there is no flash of the wrong mode. -->
     <script is:inline>
@@ -103,7 +105,7 @@ const isCurrent = (href) => path === href || (href !== '/' && path.startsWith(hr
     <a class="skip" href="#main">Skip to content</a>
     <div class="wrap">
       <header class="masthead">
-        <a class="brand" href="/">Field Notes <small>AI tooling, tested</small></a>
+        <a class="brand" href="/">Field Notes <small>measured from China</small></a>
         <nav>
           {nav.map((item) => (
             <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
@@ -126,7 +128,10 @@ const isCurrent = (href) => path === href || (href !== '/' && path.startsWith(hr
 
       <footer class="site-foot">
         <p>Field Notes — written by hand, no newsletter spam, unsubscribe in one click.</p>
-        <p class="colophon">Built with Astro · Hosted on Cloudflare Pages · <a href="/rss.xml">RSS</a></p>
+        <p class="colophon">
+          Built with Astro · Hosted on Cloudflare Pages · <a href="/rss-main.xml">RSS: main line</a>
+          <span class="sep">·</span><a href="/rss.xml">RSS: all sections</a>
+        </p>
       </footer>
     </div>
 

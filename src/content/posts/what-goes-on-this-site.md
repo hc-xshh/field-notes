@@ -3,6 +3,7 @@ title: What goes on this site, and what does not
 description: The scope of Field Notes, how often it updates, and why the numbers here have to come from a script.
 date: 2026-10-07
 lang: en
+topic: ai-and-engineering
 ---
 
 Most writing about AI tooling is written by people who watched a demo. This site is written
