@@ -406,6 +406,16 @@ main { padding: 2.75rem 0 4rem; }
 
 .prose pre code { font-size: inherit; }
 
+.prose .table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 0 1.5rem;
+}
+
+.prose .table-wrap table {
+  margin-bottom: 0;
+}
+
 .prose table {
   width: 100%;
   border-collapse: collapse;
