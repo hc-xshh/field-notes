@@ -34,7 +34,7 @@ CARD = '''<!doctype html>
   * { box-sizing: border-box; margin: 0; }
   html, body { width: 1200px; height: 630px; }
   body {
-    background: #fbfaf7; color: #17171b; font-family: 'Inter', sans-serif;
+    background: #fbfaf7; color: #17171b; font-family: 'Inter', 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
     padding: 64px 72px 56px; display: flex; flex-direction: column;
     border: 1px solid #e7e3db;
   }
@@ -42,7 +42,7 @@ CARD = '''<!doctype html>
     text-transform: uppercase; color: #a4401a; }
   .brand span { color: #6d6d78; letter-spacing: .1em; font-weight: 500; }
   .body { flex: 1; display: flex; align-items: center; }
-  h1 { font-family: 'Newsreader', serif; font-weight: 600; line-height: 1.12;
+  h1 { font-family: 'Newsreader', 'Songti SC', 'Noto Serif CJK SC', 'SimSun', serif; font-weight: 600; line-height: 1.12;
     letter-spacing: -.01em; font-size: __SIZE__px; }
   .foot { border-top: 1px solid #d5cfc4; padding-top: 22px; display: flex;
     justify-content: space-between; align-items: baseline;

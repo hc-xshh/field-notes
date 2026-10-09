@@ -8,6 +8,9 @@ const {
   schema = null,
   noindex = false,
   ogImage = '/og/default.png',
+  // Chinese posts declare the page language so screen readers, hyphenation and
+  // search engines do not treat a zh article as English.
+  lang = 'en',
 } = Astro.props;
 
 const path = Astro.url.pathname;
@@ -44,7 +47,7 @@ const isCurrent = (href) => path === href || (href !== '/' && path.startsWith(hr
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang === 'zh' ? 'zh-CN' : 'en'}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

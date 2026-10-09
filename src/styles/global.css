@@ -10,8 +10,11 @@
 :root {
   color-scheme: light;
 
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --display: 'Newsreader', ui-serif, Georgia, 'Times New Roman', serif;
+  /* Latin faces first; the CJK fallbacks only kick in for the Chinese section,
+     where the self-hosted latin subsets have no glyphs. System CJK fonts keep
+     the page weight unchanged. */
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
+  --display: 'Newsreader', ui-serif, Georgia, 'Times New Roman', 'Songti SC', 'Hiragino Mincho ProN', 'Noto Serif CJK SC', 'SimSun', serif;
   --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
 
   --paper: #fbfaf7;
